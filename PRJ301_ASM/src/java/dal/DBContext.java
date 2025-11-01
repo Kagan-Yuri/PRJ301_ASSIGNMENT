@@ -4,7 +4,6 @@
  */
 package dal;
 
-import model.BaseModel;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -14,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author sonnt
  */
-public abstract class DBContext<T extends BaseModel> {
+public abstract class DBContext<T> {
     protected Connection connection = null;
     
     public DBContext()
@@ -22,7 +21,7 @@ public abstract class DBContext<T extends BaseModel> {
         try {
             String user = "sa";
             String pass = "sa";
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=A24-PRJ301;encrypt=true;trustServerCertificate=true";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=FALL25-ASM;encrypt=true;trustServerCertificate=true";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException ex) {
