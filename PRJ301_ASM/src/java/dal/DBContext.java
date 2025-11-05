@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author sonnt
- */
 public abstract class DBContext<T> {
     protected Connection connection = null;
     
