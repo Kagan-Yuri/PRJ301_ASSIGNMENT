@@ -13,35 +13,12 @@ import model.User;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class UserDBContext {
-
-    DBContext db = new DBContext() {
-        @Override
-        public ArrayList list() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public Object get(int id) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        @Override
-        public void insert(Object model) {
-        }
-
-        @Override
-        public void update(Object model) {
-        }
-
-        @Override
-        public void delete(Object model) {
-        }
-    };
+public class UserDBContext extends DBContext {
 
     public User findByUsername(String username) throws SQLException {
         String sql = "SELECT * FROM users WHERE username = ?";
-        try (Connection c = db.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -65,7 +42,8 @@ public class UserDBContext {
 
     public boolean checkPassword(String username, String passwordPlain) throws SQLException {
         String sql = "SELECT password_hash FROM users WHERE username = ?";
-        try (Connection c = db.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -77,5 +55,30 @@ public class UserDBContext {
             }
         }
         return false;
+    }
+
+    @Override
+    public ArrayList list() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object get(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void insert(Object model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void update(Object model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void delete(Object model) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
