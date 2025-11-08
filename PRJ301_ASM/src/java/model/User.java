@@ -16,6 +16,9 @@ public class User {
     private int departmentId;
     private Integer managerId;
 
+    public User() {
+    }
+
     public int getId() {
         return id;
     }
